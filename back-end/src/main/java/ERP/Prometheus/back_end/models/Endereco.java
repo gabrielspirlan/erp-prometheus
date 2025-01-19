@@ -1,13 +1,10 @@
 package ERP.Prometheus.back_end.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
-@Table()
+@Table(name = "enderecos")
 public class Endereco {
 
     @Id
@@ -16,26 +13,30 @@ public class Endereco {
     private Integer id;
 
     @Column(length = 200)
-   private String logradouro;
+    private String logradouro;
 
     @Column(length = 200)
-   private String numero;
+    private String numero;
 
     @Column(length = 200)
     private String bairro;
 
-   @Column (length = 200, nullable = true)
-   private String complemento;
+    @Column(length = 200, nullable = true)
+    private String complemento;
 
-    @Column (length = 200)
+    @Column(length = 200)
     private String cidade;
 
-    @Column (length = 200)
+    @Column(length = 200)
     private String estado;
 
     @Column(length = 9)
     private String cep;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    @JsonBackReference
+    private Usuario usuario;
 
     public Integer getId() {
         return id;
@@ -101,17 +102,11 @@ public class Endereco {
         this.cep = cep;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
-
-
-//    public List<Usuario> getUsuarios() {
-//        return usuarios;
-//    }
-//
-//    public void setUsuarios(List<Usuario> usuarios) {
-//        this.usuarios = usuarios;
-//    }
-
-//   @OneToMany(mappedBy = "endereco")
-//   private List<Usuario> usuarios = new ArrayList<Usuario>();
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

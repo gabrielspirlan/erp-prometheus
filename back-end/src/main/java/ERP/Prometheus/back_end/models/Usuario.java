@@ -1,5 +1,6 @@
 package ERP.Prometheus.back_end.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -7,6 +8,7 @@ import java.util.Date;
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
@@ -24,10 +26,9 @@ public class Usuario {
     @Column()
     private Boolean isActive = true;
 
-
-//    @ManyToOne
-//    @JoinColumn(name = "id_endereco")
-//    private Endereco endereco;
+    @JsonManagedReference
+    @OneToOne(mappedBy = "usuario")
+    private Endereco endereco;
 
     public Integer getId() {
         return id;
@@ -67,5 +68,13 @@ public class Usuario {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }
