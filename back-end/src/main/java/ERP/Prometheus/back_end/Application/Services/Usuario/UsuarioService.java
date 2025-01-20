@@ -1,7 +1,7 @@
 package ERP.Prometheus.back_end.Application.Services.Usuario;
 
 import ERP.Prometheus.back_end.Domain.Contracts.Endereco.EnderecoDTO;
-import ERP.Prometheus.back_end.Domain.Contracts.Result.Response.UsuarioResponseGetOneById;
+import ERP.Prometheus.back_end.Domain.Contracts.Usuario.Response.UsuarioResponseGetOneById;
 import ERP.Prometheus.back_end.Domain.Models.Usuario;
 import ERP.Prometheus.back_end.Infrastructure.PostgreSQL.Repositories.Usuario.UsuarioRepository;
 import jakarta.transaction.Transactional;

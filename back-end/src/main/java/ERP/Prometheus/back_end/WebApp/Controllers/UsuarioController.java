@@ -1,7 +1,7 @@
 package ERP.Prometheus.back_end.WebApp.Controllers;
 
 import ERP.Prometheus.back_end.Application.Services.Usuario.UsuarioServiceInterface;
-import ERP.Prometheus.back_end.Domain.Contracts.Result.Response.UsuarioResponseGetOneById;
+import ERP.Prometheus.back_end.Domain.Contracts.Usuario.Response.UsuarioResponseGetOneById;
 import ERP.Prometheus.back_end.Domain.Models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

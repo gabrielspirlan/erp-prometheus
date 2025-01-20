@@ -1,6 +1,5 @@
-package ERP.Prometheus.back_end.Domain.Contracts.Result.Response;
+package ERP.Prometheus.back_end.Domain.Contracts.Usuario.Response;
 import ERP.Prometheus.back_end.Domain.Contracts.Endereco.EnderecoDTO;
-import ERP.Prometheus.back_end.Domain.Models.Endereco;
 
 import java.util.Date;
 
