@@ -1,4 +1,4 @@
-package ERP.Prometheus.back_end.models;
+package ERP.Prometheus.back_end.Domain.Models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -76,5 +76,17 @@ public class Usuario {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public Usuario () {
+
+    }
+
+    public Usuario(Integer id, String nome, String cpf, Date data_nascimento, Boolean isActive) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.data_nascimento = data_nascimento;
+        this.isActive = isActive;
     }
 }

@@ -1,7 +1,8 @@
-package ERP.Prometheus.back_end.controllers;
+package ERP.Prometheus.back_end.WebApp.Controllers;
 
-import ERP.Prometheus.back_end.models.Usuario;
-import ERP.Prometheus.back_end.services.UsuarioService;
+import ERP.Prometheus.back_end.Application.Services.Usuario.UsuarioServiceInterface;
+import ERP.Prometheus.back_end.Domain.Contracts.Result.Response.UsuarioResponseGetOneById;
+import ERP.Prometheus.back_end.Domain.Models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    private UsuarioService usuarioService;
+    private UsuarioServiceInterface usuarioService;
 
     @GetMapping
     public ResponseEntity<List<Usuario>> findAll() {
@@ -25,8 +26,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> findById(@PathVariable Integer id) {
-        Usuario usuario = this.usuarioService.getOneById(id);
+    public ResponseEntity<UsuarioResponseGetOneById> findById(@PathVariable Integer id) {
+        UsuarioResponseGetOneById usuario = this.usuarioService.getOneById(id);
         return ResponseEntity.ok().body(usuario);
     }
 

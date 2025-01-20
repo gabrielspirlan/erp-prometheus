@@ -1,7 +1,7 @@
-package ERP.Prometheus.back_end.services;
+package ERP.Prometheus.back_end.Application.Services.Endereco;
 
-import ERP.Prometheus.back_end.models.Endereco;
-import ERP.Prometheus.back_end.repositories.EnderecoRepository;
+import ERP.Prometheus.back_end.Domain.Models.Endereco;
+import ERP.Prometheus.back_end.Infrastructure.PostgreSQL.Repositories.Endereco.EnderecoRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @Service
-public class EnderecoService {
+public class EnderecoService implements EnderecoServiceInterface {
 
     @Autowired
     private EnderecoRepository enderecoRepository;
@@ -56,6 +56,9 @@ public class EnderecoService {
         if (updatedEndereco.getEstado() != null)
             endereco.setEstado(updatedEndereco.getEstado());
 
+        if (updatedEndereco.getUsuario() != null)
+            endereco.setUsuario(updatedEndereco.getUsuario());
+
         return this.enderecoRepository.save(endereco);
     }
 
@@ -66,7 +69,6 @@ public class EnderecoService {
         } catch (Exception e) {
             throw new RuntimeException("Não é possível excluir, pois há entidades relacionadas!");
         }
-
     }
 
 }

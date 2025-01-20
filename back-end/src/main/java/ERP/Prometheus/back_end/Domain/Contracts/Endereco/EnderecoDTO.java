@@ -1,42 +1,22 @@
-package ERP.Prometheus.back_end.models;
+package ERP.Prometheus.back_end.Domain.Contracts.Endereco;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
+public class EnderecoDTO {
 
-@Entity
-@Table(name = "enderecos")
-public class Endereco {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true)
     private Integer id;
 
-    @Column(length = 200)
     private String logradouro;
 
-    @Column(length = 200)
     private String numero;
 
-    @Column(length = 200)
     private String bairro;
 
-    @Column(length = 200, nullable = true)
     private String complemento;
 
-    @Column(length = 200)
     private String cidade;
 
-    @Column(length = 200)
     private String estado;
 
-    @Column(length = 9)
     private String cep;
-
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    @JsonBackReference
-    private Usuario usuario;
 
     public Integer getId() {
         return id;
@@ -102,11 +82,18 @@ public class Endereco {
         this.cep = cep;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public EnderecoDTO() {
+
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public EnderecoDTO(Integer id, String logradouro, String numero, String bairro, String complemento, String cidade, String estado, String cep) {
+        this.id = id;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.complemento = complemento;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.cep = cep;
     }
 }

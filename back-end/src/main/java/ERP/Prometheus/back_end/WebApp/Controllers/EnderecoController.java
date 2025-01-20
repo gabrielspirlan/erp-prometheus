@@ -1,9 +1,8 @@
-package ERP.Prometheus.back_end.controllers;
+package ERP.Prometheus.back_end.WebApp.Controllers;
 
-import ERP.Prometheus.back_end.models.Endereco;
-import ERP.Prometheus.back_end.repositories.EnderecoRepository;
-import ERP.Prometheus.back_end.services.EnderecoService;
-import io.swagger.models.Response;
+import ERP.Prometheus.back_end.Application.Services.Endereco.EnderecoServiceInterface;
+import ERP.Prometheus.back_end.Domain.Models.Endereco;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +16,7 @@ import java.util.List;
 public class EnderecoController {
 
     @Autowired
-    private EnderecoService enderecoService;
+    private EnderecoServiceInterface enderecoService;
 
 
     @GetMapping
