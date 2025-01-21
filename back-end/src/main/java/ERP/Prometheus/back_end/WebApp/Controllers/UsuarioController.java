@@ -1,7 +1,8 @@
 package ERP.Prometheus.back_end.WebApp.Controllers;
 
 import ERP.Prometheus.back_end.Application.Services.Usuario.UsuarioServiceInterface;
-import ERP.Prometheus.back_end.Domain.Contracts.Usuario.Response.UsuarioResponseGetOneById;
+import ERP.Prometheus.back_end.Domain.Contracts.Usuario.Request.UsuarioRequestCreate;
+import ERP.Prometheus.back_end.Domain.Contracts.Usuario.Response.UsuarioResponseGet;
 import ERP.Prometheus.back_end.Domain.Models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,21 +21,21 @@ public class UsuarioController {
     private UsuarioServiceInterface usuarioService;
 
     @GetMapping
-    public ResponseEntity<List<Usuario>> findAll() {
-        List<Usuario> usuarios = this.usuarioService.getAll();
+    public ResponseEntity<List<UsuarioResponseGet>> findAll() {
+        List<UsuarioResponseGet> usuarios = this.usuarioService.getAll();
         return ResponseEntity.ok().body(usuarios);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UsuarioResponseGetOneById> findById(@PathVariable Integer id) {
-        UsuarioResponseGetOneById usuario = this.usuarioService.getOneById(id);
+    public ResponseEntity<UsuarioResponseGet> findById(@PathVariable Integer id) {
+        UsuarioResponseGet usuario = this.usuarioService.getOneById(id);
         return ResponseEntity.ok().body(usuario);
     }
 
     @PostMapping
-    public ResponseEntity<Void> create ( @RequestBody  Usuario usuario) {
-        this.usuarioService.create(usuario);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuario.getId()).toUri();
+    public ResponseEntity<Void> create ( @RequestBody UsuarioRequestCreate request) {
+        this.usuarioService.create(request);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(request.getUsuario().getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 

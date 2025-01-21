@@ -2,7 +2,7 @@ package ERP.Prometheus.back_end.Domain.Contracts.Endereco;
 
 public class EnderecoDTO {
 
-    private Integer id;
+
 
     private String logradouro;
 
@@ -17,6 +17,8 @@ public class EnderecoDTO {
     private String estado;
 
     private String cep;
+
+    private Integer id;
 
     public Integer getId() {
         return id;
@@ -86,7 +88,17 @@ public class EnderecoDTO {
 
     }
 
-    public EnderecoDTO(Integer id, String logradouro, String numero, String bairro, String complemento, String cidade, String estado, String cep) {
+    public EnderecoDTO(String logradouro, String numero, String bairro, String complemento, String cidade, String estado, String cep) {
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.complemento = complemento;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.cep = cep;
+    }
+
+    public EnderecoDTO(String logradouro, String numero, String bairro, String complemento, String cidade, String estado, String cep, Integer id) {
         this.id = id;
         this.logradouro = logradouro;
         this.numero = numero;

@@ -1,6 +1,8 @@
 package ERP.Prometheus.back_end.Application.Services.Usuario;
 
-import ERP.Prometheus.back_end.Domain.Contracts.Usuario.Response.UsuarioResponseGetOneById;
+import ERP.Prometheus.back_end.Domain.Contracts.Usuario.Request.UsuarioRequestCreate;
+import ERP.Prometheus.back_end.Domain.Contracts.Usuario.Response.UsuarioResponseCreate;
+import ERP.Prometheus.back_end.Domain.Contracts.Usuario.Response.UsuarioResponseGet;
 import ERP.Prometheus.back_end.Domain.Models.Usuario;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -9,12 +11,12 @@ import java.util.List;
 
 @Service
 public interface UsuarioServiceInterface {
-    public List<Usuario> getAll();
+    public List<UsuarioResponseGet> getAll();
 
-    public UsuarioResponseGetOneById getOneById(Integer id);
+    public UsuarioResponseGet getOneById(Integer id);
 
     @Transactional
-    public Usuario create (Usuario usuario);
+    public UsuarioResponseCreate create (UsuarioRequestCreate request);
 
     @Transactional
     public Usuario update (Usuario updatedUsuario);
